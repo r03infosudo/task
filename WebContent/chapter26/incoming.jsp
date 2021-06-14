@@ -7,7 +7,7 @@
 
 <p>入荷入力</p>
 <hr>
-     商品コード<select form="IncomingForm" id="productCode" onChange="selectboxChange();">
+     商品コード<select form="IncomingForm" id="productCode">
         <option selected disabled hidden>選んでください</option>
         <c:forEach var="item" items="${proList}">
         	<option value="${item.productCode}">${item.productCode}</option>
