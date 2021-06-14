@@ -5,14 +5,6 @@
 <%@page contentType="text/html; charset=UTF-8" %>
 <%@include file="../header.html" %>
 
-<script>
-    document.getElementById('productCode').onchange = function() {
-    	let pCode = document.getElementById('productCode').value;
-    	document.getElementById('productName').value = ${proMap.pCode.productName};
-    }
-  </script>
-
-
 <p>入荷入力</p>
 <hr>
      商品コード<select form="IncomingForm" id="productCode" onChange="selectboxChange();">
@@ -22,7 +14,12 @@
         </c:forEach>
     </select>
     
-    <p>商品名<input type="text" form="IncomingForm" id="productName" required></p>
+    商品名<select form="IncomingForm" id="productName" >
+        <option selected disabled hidden>選んでください</option>
+        <c:forEach var="item" items="${proList}">
+        	<option value="${item.productName}">${item.productName}</option>
+        </c:forEach>
+    </select>
 
      仕入先コード<select form="IncomingForm" id="supplierCode">
         <option selected disabled hidden>選んでください</option>
@@ -55,4 +52,12 @@
 
 <form action="Incoming.action" method="post" id="IncomingForm"></form>
 
+
+<script>
+    document.getElementById('productCode').onchange = function() {
+    	let index = document.getElementById('productCode').selectedIndex;
+    	document.getElementById('productName').selectedIndex = index;
+    }
+</script>
+  
 <%@include file="../footer.html" %>

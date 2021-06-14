@@ -6,13 +6,12 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.Incoming;
 import bean.Product;
 
 public class ProductDAO extends DAO {
 
-	public List<Incoming> search() throws Exception {
-		List<Incoming> list=new ArrayList<>();
+	public List<Product> search() throws Exception {
+		List<Product> list=new ArrayList<>();
 
 		Connection con=getConnection();
 
@@ -22,9 +21,10 @@ public class ProductDAO extends DAO {
 		ResultSet rs=st.executeQuery();
 
 		while (rs.next()) {
-			Incoming i=new Incoming();
-			i.setProductCode(rs.getString("product_code"));
-			list.add(i);
+			Product p=new Product();
+			p.setProductCode(rs.getString("product_code"));
+			p.setProductName(rs.getString("product_name"));
+			list.add(p);
 		}
 
 		st.close();
@@ -32,7 +32,7 @@ public class ProductDAO extends DAO {
 
 		return list;
 	}
-	
+	/*
 	public List<Product> search(String keyword) throws Exception {
 		List<Product> list=new ArrayList<>();
 
@@ -54,4 +54,5 @@ public class ProductDAO extends DAO {
 
 		return list;
 	}
+	*/
 }
