@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.Product;
 import bean.Incoming;
+import bean.Product;
 
 public class ProductDAO extends DAO {
 
@@ -32,18 +32,26 @@ public class ProductDAO extends DAO {
 
 		return list;
 	}
+	
+	public List<Product> search(String keyword) throws Exception {
+		List<Product> list=new ArrayList<>();
 
-	public int insert(Product product) throws Exception {
 		Connection con=getConnection();
 
 		PreparedStatement st=con.prepareStatement(
-			"insert into product values(null, ?, ?)");
-		st.setString(1, product.getName());
-		st.setInt(2, product.getPrice());
-		int line=st.executeUpdate();
+			"select * from product_master where product_code = ?");
+		st.setString(1, keyword);
+		ResultSet rs=st.executeQuery();
+
+		while (rs.next()) {
+			Product p=new Product();
+			p.setProductName(rs.getString("product_name"));
+			list.add(p);
+		}
 
 		st.close();
 		con.close();
-		return line;
+
+		return list;
 	}
 }

@@ -2,27 +2,20 @@ package bean;
 
 public class Product implements java.io.Serializable {
 
-	private int id;
-	private String name;
-	private int price;
+	private String productCode;
+	private String productName;
 
-	public int getId() {
-		return id;
+	public String getProductCode() {
+		return productCode;
 	}
-	public String getName() {
-		return name;
-	}
-	public int getPrice() {
-		return price;
+	public String getProductName() {
+		return productName;
 	}
 
-	public void setId(int id) {
-		this.id=id;
+	public void setProductCode(String productCode) {
+		this.productCode=productCode;
 	}
-	public void setName(String name) {
-		this.name=name;
-	}
-	public void setPrice(int price) {
-		this.price=price;
+	public void setProductName(String productName) {
+		this.productName=productName;
 	}
 }
