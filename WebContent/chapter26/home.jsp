@@ -8,7 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <title>テスト株式会社</title>
-<link rel="stylesheet" href="style.css">
 
 </head>
 <body>
@@ -34,7 +33,7 @@
 
 <tr>
 <td><a href="IncomingData.action">入荷</a></td>
-<td><a href="">入荷伝票</a></td>
+<td><a href="../chapter26/incoming-sheet.jsp">入荷伝票</a></td>
 <td><a href="">仕入先情報</a></td>
 </tr>
 <tr>
